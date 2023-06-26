@@ -1,0 +1,169 @@
+Answer 1:-
+class Solution {
+public:
+    int arrayPairSum(vector<int>& nums) {
+        int result = 0;
+        sort(nums.begin(), nums.end());
+        for (int i = 0; i < nums.size(); i += 2) {
+           result += nums[i]; 
+        }
+        return result;
+    }
+};
+
+
+Answer 2:-
+class Solution {
+public:
+    int distributeCandies(vector<int>& candyType) {
+        int n = candyType.size();
+        unordered_set<int> s(candyType.begin(), candyType.end());
+        if(s.size() >= n/2){
+            return n/2;
+        }
+        return s.size();
+    }
+};
+
+Answer 3:-
+class Solution {
+public:
+	int findLHS(vector<int>& nums) {
+		unordered_map<int, int> tmp;
+		int maxSub = 0;
+		for (auto num: nums)
+		{
+			++tmp[num];
+		}
+		
+		for (auto & [ num, value ]: tmp)
+		{
+			if ( tmp.end() != tmp.find(num - 1) )
+				if( maxSub < tmp[num - 1] + value )
+					maxSub = tmp[num - 1] + value;
+		}
+		return maxSub;
+	}
+};
+
+Answer 4:- 
+class Solution {
+public:
+    bool canPlaceFlowers(vector<int>& f, int n) {
+        if(n==0){
+            return true;
+        }
+        for(int i=0;i<f.size();i++){
+            if (f[i]==0)
+            {
+                int sum=0;
+                int fin=0;
+                if(i==0){
+                    sum+=1;
+                }
+               
+                while (f[i]==0 && i<f.size()){
+                    sum+=1;
+                    i++;
+                    if(i==f.size()){
+                        sum+=1;
+                        break;
+                    }
+                }
+                
+
+                if (sum>0){
+                    if( sum%2==0){
+                        fin=(sum/2)-1;
+                        if(fin>=n){
+                            return true;
+                        }
+                        else{
+                            n-=fin;
+                        }
+                    }
+                    else if(sum>2 and sum%2!=0){
+                        fin=sum/2;
+                        if(fin>=n){
+                            return true;
+                        }
+                        else{
+                            n-=fin;
+                        }
+                    }
+                }
+                
+                i--;
+            
+            }
+            
+            
+        }
+        return false;
+    }
+};
+
+Answer 5:-
+class Solution {
+public:
+    int maximumProduct(vector<int>& nums) {
+        int n= nums.size();
+        sort(nums.begin(),nums.end());
+        int ans1= nums[n-1]*nums[n-2]*nums[n-3];
+        int ans2= nums[0]*nums[1]*nums[n-1];
+        return max(ans1,ans2);
+    }
+};
+
+Answer 6:
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        int l=0;
+        int h=nums.size()-1;
+        while(l<=h)
+        {
+            int mid = l + (h-l)/2;
+            if(nums[mid]==target) return mid;
+            else if (nums[mid]<target) {
+                l=mid+1;
+            }
+            else h=mid-1;
+        }
+        return -1;
+    }
+};
+
+Answer 7:-
+class Solution {
+public:
+    bool isMonotonic(vector<int>& nums) {
+        bool increase = true;
+        bool decrease = true;
+        for(int i = 0; i < nums.size() - 1; i++) {
+            if(nums[i] > nums[i+1]) increase = false;
+            if(nums[i] < nums[i+1]) decrease = false;
+            if(increase == false && decrease == false) return false;
+        }
+        return true;
+    }
+};
+
+Answer 8:-
+class Solution {
+public:
+    int smallestRangeI(vector<int>& nums, int k) {
+        int n = nums.size();
+        int maxx = nums[0], minn = nums[0];
+        
+        for (int i=0; i<n; i++) {
+            maxx = max(maxx, nums[i]);
+            minn = min(minn, nums[i]);
+        }
+
+        int diff = maxx - minn;
+
+        if (diff - k <= k) return 0;
+        return diff-k-k;
+    }
+};
