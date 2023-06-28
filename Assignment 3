@@ -1,0 +1,171 @@
+Answer 1:-
+class Solution {
+public:
+    int threeSumClosest(vector<int>& nums, int target) {
+        sort(nums.begin(),nums.end());
+        int nearestsum=nums[0]+nums[1]+nums[2];
+        for(int i=0;i<nums.size()-1;i++){
+         
+            int start=i+1;
+            int end=nums.size()-1;
+
+            while(start<end){
+                int currentsum =nums[start]+nums[end]+nums[i];
+                 if(abs(currentsum-target)<abs(nearestsum-target)){
+                        nearestsum=currentsum;
+                    } 
+                if(currentsum<target){
+                    start++;
+                } else {
+                    end--;
+                }
+            }
+          
+        }
+        return nearestsum;
+    }
+};
+
+
+   Answer 2:-
+class Solution {
+public:
+    vector<vector<int>> fourSum(vector<int>& nums, int target) {
+        vector<vector<int>> ans;
+        if(nums.empty())
+        return ans;
+        int n=nums.size();
+        sort(nums.begin(),nums.end());
+        for(int i=0;i<n;i++)
+        {
+            for(int j=i+1;j<n;j++)
+            {
+                int sum= target-nums[j]-nums[i];
+                int lo=j+1;
+                int hi=n-1;
+                while(lo<hi)
+                {
+                    if(nums[lo]+nums[hi]<sum) lo++;
+                    else if (nums[lo]+nums[hi]>sum) hi--;
+                    else
+                    {
+                        vector<int> temp(4,0);
+                        temp.push_back(nums[i]);
+                        temp.push_back(nums[j]);
+                        temp.push_back(nums[lo]);
+                        temp.push_back(nums[hi]);
+                        ans.push_back(temp);
+
+                        while(lo<hi && nums[lo]==temp[2]) ++lo;
+                        while(lo<hi && nums[hi]==temp[3]) --hi;
+
+                    }
+                }
+                while(j+1<n && nums[j+1]==nums[j]) ++j;
+            }
+            while(i+1<n && nums[i+1]==nums[i]) ++i;
+        }
+        return ans;
+    }
+};
+
+Answer 3:-
+class Solution {
+    private:
+    void reverse(vector<int>& nums, int s, int e) {
+        while(s < e) {
+            swap(nums[s++], nums[e--]);
+        }
+    }
+    
+    public:
+    void nextPermutation(vector<int>& nums) {
+        int n = nums.size();
+
+        int index = -1;
+        for(int i = n-2; i >= 0; i--) { // TC: O(n)
+            if(nums[i] < nums[i+1]) {
+                index = i;
+                break;
+            }
+        }
+        
+        if(index != -1) {
+            for(int i=n-1;i>index;i--){ // TC: O(n)
+                if(nums[i]>nums[index]){
+                    swap(nums[i],nums[index]);
+                    break;
+                }
+            }
+            
+        }
+
+        reverse(nums, index+1, n-1); // TC: O(n)
+    }
+};
+
+Answer4:-
+class Solution {
+public:
+    int searchInsert(vector<int>& nums, int target) {
+        int n=nums.size();
+        if(nums[n-1]<target) return n;
+        int ans=0;
+        for(int i=0;i<n;i++)
+        {
+            if(nums[i]==target || nums[i]>target)
+            {
+                ans=i;
+                break;
+            }
+        }
+        return ans;
+    }
+};
+
+Answer 5:-
+class Solution {
+public:
+    vector<int> plusOne(vector<int>& digits) {
+        int n=digits.size();
+        for(int i=n-1;i>=0;i--)
+        {
+            if(digits[i]!=9)
+            {
+                digits[i]++;
+                return digits;
+            }
+            else{
+                digits[i]=0;
+            }
+        }
+        digits.insert(digits.begin(),1);
+        return digits;
+    }
+};
+
+Answer 6:-
+int findSingleNumber(vector<int>& nums) {
+    int result = 0;
+    for (int num : nums) {
+        result ^= num; 
+    }
+    return result;
+}
+
+Answer 7:-
+sorry , unable to solve
+
+Answer 8:-
+class MeetingRooms {
+public:
+    static bool canAttend(std::vector<std::vector<int>>& intervals) {
+        if (intervals.empty())
+            return true;
+        for (int i = 1; i < intervals.size(); i++) {
+            if (intervals[i][0] < intervals[i - 1][1])
+                return false;
+        }
+        return true;
+    }
+};
