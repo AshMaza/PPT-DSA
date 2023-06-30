@@ -1,0 +1,178 @@
+Answer 1:-
+class Solution {
+public:
+    vector<vector<int>> construct2DArray(vector<int>& original, int m, int n) {
+   
+        if(m*n !=original.size()) return {};
+        vector<vector<int>>ans(m,vector<int>(n,0));
+        for(int i=0;i<original.size();i++){
+            ans[i/n][i%n]=original[i];
+        }
+        return ans;
+    }
+};
+
+Answer 2:-
+class Solution {
+public:
+    int arrangeCoins(int n) {
+        int c=n;
+        long long i=1;
+        if(n==0) return 0;
+        else if(n==1) return 1;
+        while(c>0){
+            i++;
+            c-=i;
+
+        }
+    return i-1;}
+};
+
+Answer 3:-
+class Solution {
+public:
+    vector<int> sortedSquares(vector<int>& nums) {
+        int left=0, right=nums.size()-1;
+        vector<int> res(nums.size(),0);
+        int i=res.size()-1;
+        while(left<=right)
+        {
+            int leftp=pow(nums[left],2), rightp=pow(nums[right],2);
+            if(leftp>=rightp) 
+            {
+                res[i]=leftp;
+                left++;
+                i--;
+            }
+            else
+            {
+                res[i]=rightp;
+                right--;
+                i--;
+            }
+        }
+        return res;
+    }
+};
+
+Answer 4:-
+class Solution {
+public:
+    vector<vector<int>> findDifference(vector<int>& nums1, vector<int>& nums2) {
+        unordered_set<int> set1(nums1.begin(), nums1.end());
+        unordered_set<int> set2(nums2.begin(), nums2.end());
+        
+        vector<int> distinct_nums1, distinct_nums2;
+        for (int num : set1) {
+            if (set2.count(num) == 0) {
+                distinct_nums1.push_back(num);
+            }
+        }
+
+        for (int num : set2) {
+            if (set1.count(num) == 0) {
+                distinct_nums2.push_back(num);
+            }
+        }
+
+        return {distinct_nums1, distinct_nums2};
+    }
+};
+
+Answer 5:-
+class Solution {
+public:
+    int findTheDistanceValue(vector<int>& arr1, vector<int>& arr2, int d) 
+    {
+         sort(arr2.begin(),arr2.end());
+         int result = 0;
+         for(int i = 0; i<arr1.size(); i++)
+        {
+          int low = 0;
+          int high = arr2.size()-1;
+          while(low <= high)
+          {
+             int mid=low +(high-low)/2;
+             if(abs(arr1[i]-arr2[mid]) <= d)
+             {
+                 break;
+             }if(arr2[mid] < arr1[i]){
+                 low = mid +1;
+             }else{
+                 high = mid-1;
+             }
+          }
+          if(low > high){
+              result++;
+          }
+        }
+     return result;
+    }
+};
+
+Answer 6:-
+class Solution {
+public:
+    vector<int> findDuplicates(vector<int>& nums) {
+        vector<int> ans;
+        for(int i:nums)
+        {
+            i=abs(i);
+            if(nums[i-1]>0)
+            {
+                nums[i-1]=(-1*nums[i-1]);
+            }
+            
+            else
+                ans.push_back(i);
+        }
+        return ans;
+    }
+};
+
+Answer 7:-
+class Solution {
+public:
+    int findMin(vector<int>& nums) {
+        int n = nums.size();
+        int low=0, high=n-1;
+        
+        while(low<high){
+            if(nums[low] <= nums[high]) return nums[low];
+            int mid = low + (high-low)/2;
+            if(nums[low] > nums[mid]){
+                high=mid;
+            } else if(nums[mid] > nums[high]) {
+                low=mid+1;
+            } 
+        }
+        if(nums[low] <= nums[high]) return nums[low];
+        return -1;
+    }
+};
+
+Answer 8:-
+class Solution {
+public:
+    vector<int> findOriginalArray(vector<int>& changed) {
+        if(changed.size()&1){return {};}
+        sort(changed.begin(), changed.end());
+        vector<int>ans;
+        unordered_map<int, int>m;
+        for(int i=0; i<changed.size(); i++){
+            m[changed[i]]++;
+        }
+        for(int i=0; i<changed.size(); i++){
+            if(m[changed[i]]==0){
+                continue;
+            }
+            m[changed[i]]--;
+            if(m[changed[i]*2]==0){
+                return {};
+            }
+            m[changed[i]*2]--;
+            ans.push_back(changed[i]);
+        }
+        return ans;
+    }
+};
