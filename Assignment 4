@@ -1,0 +1,144 @@
+Answer 1:-
+#include <vector>
+
+vector<int> findCommonElements(vector<int>& arr1, vector<int>& arr2, vector<int>& arr3) {
+    vector<int> result;
+    int ptr1 = 0, ptr2 = 0, ptr3 = 0;
+    
+    while (ptr1 < arr1.size() && ptr2 < arr2.size() && ptr3 < arr3.size()) {
+        if (arr1[ptr1] == arr2[ptr2] && arr2[ptr2] == arr3[ptr3]) {
+            result.push_back(arr1[ptr1]);
+            ptr1++;
+            ptr2++;
+            ptr3++;
+        }
+        else if (arr1[ptr1] < arr2[ptr2])
+            ptr1++;
+        else if (arr2[ptr2] < arr3[ptr3])
+            ptr2++;
+        else
+            ptr3++;
+    }
+    
+    return result;
+}
+
+Answer 2:-
+class Solution {
+public:
+    vector<vector<int>> findDifference(vector<int>& nums1, vector<int>& nums2) {
+        unordered_set<int> set1(nums1.begin(), nums1.end());
+        unordered_set<int> set2(nums2.begin(), nums2.end());
+        
+        vector<int> distinct_nums1, distinct_nums2;
+        for (int num : set1) {
+            if (set2.count(num) == 0) {
+                distinct_nums1.push_back(num);
+            }
+        }
+
+        for (int num : set2) {
+            if (set1.count(num) == 0) {
+                distinct_nums2.push_back(num);
+            }
+        }
+
+        return {distinct_nums1, distinct_nums2};
+    }
+};
+
+Answer 3:-
+class Solution {
+public:
+    vector<vector<int>> transpose(vector<vector<int>>& matrix) {
+        int n=matrix.size();
+        int m=matrix[0].size();
+        vector<vector<int>> ans;
+        for(int i=0;i<m;i++)
+        {
+            vector<int> temp;
+            for(int j=0;j<n;j++){
+                temp.push_back(matrix[j][i]);
+            }
+            ans.push_back(temp);
+        }
+        return ans; 
+    }
+};
+
+Answer 4:-
+class Solution {
+public:
+    int arrayPairSum(vector<int>& nums) {
+        int result = 0;
+        sort(nums.begin(), nums.end());
+        for (int i = 0; i < nums.size(); i += 2) {
+           result += nums[i]; 
+        }
+        return result;
+    }
+};
+
+Answer 5:-
+class Solution {
+public:
+    int arrangeCoins(int n) {
+        int c=n;
+        long long i=1;
+        if(n==0) return 0;
+        else if(n==1) return 1;
+        while(c>0){
+            i++;
+            c-=i;
+
+        }
+    return i-1;}
+};
+
+Answer 6:-
+class Solution {
+public:
+    vector<int> sortedSquares(vector<int>& nums) {
+        int left=0, right=nums.size()-1;
+        vector<int> arr(nums.size());
+        int i=arr.size()-1;
+        while(left<=right){
+            int temp=max(nums[left]*nums[left],nums[right]*nums[right]);
+            arr[i--]=temp;
+            if(abs(nums[left])<abs(nums[right])){
+                right--;
+            }
+            else{
+                left++;
+            }
+        }
+        return arr;
+    }
+};
+
+Answer 7:-
+class Solution {
+public:
+    int maxCount(int m, int n, vector<vector<int>>& ops) {
+        int x = m, y = n;
+        for (auto i: ops) {
+            x = min(x, i[0]);
+            y = min(y, i[1]);
+        }
+
+        return x*y;
+    }
+};
+
+Answer 8:-
+class Solution {
+public:
+    vector<int> shuffle(vector<int>& nums, int n) {
+        vector<int> result;
+        for (int i = 0; i < n; ++i) {
+            result.push_back(nums[i]);
+            result.push_back(nums[n + i]);
+        }
+        return result;
+    }
+};
