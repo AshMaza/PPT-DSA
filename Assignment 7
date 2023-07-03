@@ -1,0 +1,188 @@
+Answer 1:
+class Solution {
+public:
+    bool isIsomorphic(string s, string t) {
+        map<char,char> mp, mp1;
+        if (s.size()!=t.size())return 0;
+        for (int i=0; i<s.size(); i++){
+            if (mp.find(s[i])!=mp.end()){
+                if (mp[s[i]]!= t[i])return 0;
+            }
+            else if (mp1.find(t[i])!=mp1.end()){
+                if (mp1[t[i]]!=s[i])return 0;
+            }
+            else {mp[s[i]]= t[i];mp1[t[i]]=s[i];}
+        }
+        return 1;
+    }
+};
+
+Answer 2:-
+#include <iostream>
+#include <unordered_map>
+using namespace std;
+
+bool isStrobogrammatic(string num) {
+    // Create a hash map to store the valid strobogrammatic pairs
+    unordered_map<char, char> strob_pairs = {{'0', '0'}, {'1', '1'}, {'6', '9'}, {'8', '8'}, {'9', '6'}};
+    
+    // Initialize two pointers, one at the start and one at the end of the string
+    int left = 0, right = num.length() - 1;
+    
+    while (left <= right) {
+        // Check if the pair of characters at the current positions is strobogrammatic
+        if (strob_pairs.find(num[left]) == strob_pairs.end() || num[right] != strob_pairs[num[left]]) {
+            return false;
+        }
+        // Move the pointers towards the center
+        left++;
+        right--;
+    }
+    
+    return true;
+}
+
+int main() {
+    string num = "69";
+    cout << boolalpha << isStrobogrammatic(num) << endl;  // Output: true
+    
+    return 0;
+}
+
+Answer 3:-
+class Solution {
+public:
+    string addStrings(string num1, string num2) {
+        int n=num1.size()-1;
+        int m=num2.size()-1;
+        int carry=0;
+        string ans="";
+        while( n>=0 || m>=0)
+        {
+            int a=(n<0)?0:num1[n]-'0';
+            int b=(m<0)?0:num2[m]-'0';
+            int sum=a+b+carry;
+            ans+=to_string(sum%10);
+            carry=sum/10;
+            m--;
+            n--;
+        }
+
+        if(carry>0)
+            ans+=to_string(carry);
+         reverse(ans.begin(),ans.end());
+         return ans;   
+    }
+};
+
+Answer 4:-
+class Solution {
+public:
+    string reverseWords(string s) {
+        s.push_back(' ');
+        string ans, st;
+        for(auto c: s) {
+            if(c == ' ') {
+                reverse(st.begin(), st.end());
+                ans += st;
+                ans += ' ';
+                st.clear();
+            }
+            else st.push_back(c);
+        }
+        ans.pop_back();
+        return ans;
+    }
+};
+
+Answer 5:
+class Solution {
+public:
+    string reverseStr(string s, int k)
+    {
+        int n=s.length();
+        if(k>n)
+        { 
+            reverse(s.begin(),s.end());
+            return s;
+        }      
+       int j=0;
+    string ans; 
+    for (int i = 0; i < n; i += (2 * k))
+    {
+        string temp = s.substr(i, k);
+        reverse(temp.begin(), temp.end());
+        ans += temp;
+
+        j += k ;
+        while (j < n && j < (i+2*k))
+        {
+            ans.push_back(s[j]);
+            j++;
+        }
+    }
+    return ans;        
+    }
+};
+
+Answer 6:-
+class Solution
+{
+public:
+  bool rotateString(string s, string goal)
+  {
+    if (s.size() != goal.size())
+      return false;
+
+    for (int i = 0; i < s.size(); ++i)
+    {
+      if (s == goal)
+        return true;
+      s = s.substr(1) + s[0];
+    }
+
+    return false;
+  }
+};
+
+Answer 7:-
+class Solution {
+public:
+    bool backspaceCompare(string s, string t) {
+        stack<char>st;
+        string s1="",t1="";
+        for(auto it:s){
+            if(it!='#'){st.push(it);continue;}
+            if(!st.empty()) st.pop();
+        }
+        while(!st.empty()){s1+=st.top();st.pop();}
+        for(auto it:t){
+            if(it!='#'){st.push(it);continue;}
+            if(!st.empty()) st.pop();
+        }
+        while(!st.empty()){t1+=st.top();st.pop();}
+        return s1==t1;
+    }
+};
+
+Answer 8:-
+class Solution {
+public:
+    bool checkStraightLine(vector<vector<int>>& coordinates) 
+    {
+        int x0 = coordinates[0][0];
+        int y0 = coordinates[0][1];
+        int x1 = coordinates[1][0];
+        int y1 = coordinates[1][1];
+        for (int i = 2; i < coordinates.size(); i++) 
+        {
+            int x = coordinates[i][0];
+            int y = coordinates[i][1];
+            if ((x - x0) * (y1 - y0) != (y - y0) * (x1 - x0))
+             {
+                return false;
+            }
+        }
+        return true;
+    }
+};
