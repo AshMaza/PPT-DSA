@@ -1,0 +1,311 @@
+Answer 1:-
+class Solution {
+public:
+//     LCS string matching
+	int f(int i,int j,string& s1,string& s2){
+		if(i<0 || j<0) return 0;
+		if(s1[i]==s2[j]) return s1[i]+f(i-1,j-1,s1,s2);
+		return max(f(i-1,j,s1,s2),f(i,j-1,s1,s2));
+	}
+
+	int minimumDeleteSum(string s1, string s2) {
+		int n=s1.size();
+		int m=s2.size();
+		int sum1=0,sum2=0;
+		for(auto i:s1) sum1+=i;
+		for(auto i:s2) sum2+=i;
+		return (sum1+sum2)-2*f(n-1,m-1,s1,s2);
+	}
+};
+
+Answer 2:-
+class Solution {
+public:
+    bool checkValidString(string s) {
+        stack<int> o;
+        stack<int> st;
+        int n = s.size();
+        for(int i=0;s[i]!='\0';++i)
+        {
+            if(s[i]=='(')
+            {
+                o.push(i);
+            }
+            else if(s[i]=='*')
+            {
+                st.push(i);
+            }
+            else
+            {
+                if(!o.empty())
+                {
+                    o.pop();
+                }
+                else if(!st.empty())
+                {
+                    st.pop();
+                }
+                else 
+                    return false;
+            }
+        }
+        while(!o.empty())
+        {
+            if(st.empty())
+            {
+                return false;
+            }
+            else if(o.top()<st.top())
+            {
+             o.pop();
+             st.pop();
+            }
+            else return false;
+        }
+        return true;
+    }
+};
+
+Answer 3:-
+class Solution {
+public:
+    int minDistance(string word1, string word2) {
+        int n=word1.length(),m=word2.length();
+        int dp[n+1][m+1];
+        for(int i=0;i<=n;i++){
+            for(int j=0;j<=m;j++){
+                if(i==0 || j==0){dp[i][j]=0;}
+                else{
+                    if(word1[i-1]==word2[j-1]){
+                        dp[i][j]=1+dp[i-1][j-1];
+                    }
+                    else{
+                        dp[i][j]=max(dp[i-1][j],dp[i][j-1]);
+                    }
+                }
+            }
+        }
+        return n+m-2*dp[n][m];
+    }
+};
+
+Answer 4:-
+#include <iostream>
+#include <string>
+#include <stack>
+
+using namespace std;
+
+struct TreeNode {
+    int val;
+    TreeNode* left;
+    TreeNode* right;
+
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+};
+
+TreeNode* constructBinaryTree(const string& s) {
+    if (s.empty()) {
+        return nullptr;
+    }
+
+    int i = 0;
+    while (i < s.length() && isdigit(s[i])) {
+        i++;
+    }
+
+    int root_val = stoi(s.substr(0, i));
+    TreeNode* root = new TreeNode(root_val);
+
+    stack<TreeNode*> nodes;
+    nodes.push(root);
+
+    int n = s.length();
+    while (i < n) {
+        if (s[i] == '(') {
+            i++;
+            int j = i;
+            int count = 1;
+
+            while (count > 0) {
+                if (s[j] == '(') {
+                    count++;
+                } else if (s[j] == ')') {
+                    count--;
+                }
+
+                j++;
+            }
+
+            TreeNode* child = constructBinaryTree(s.substr(i, j - i - 1));
+
+            if (nodes.top()->left == nullptr) {
+                nodes.top()->left = child;
+            } else {
+                nodes.top()->right = child;
+            }
+
+            nodes.push(child);
+            i = j;
+        } else if (s[i] == ')') {
+            nodes.pop();
+            i++;
+        }
+    }
+
+    return root;
+}
+
+void inorderTraversal(TreeNode* root) {
+    if (root == nullptr) {
+        return;
+    }
+
+    inorderTraversal(root->left);
+    cout << root->val << " ";
+    inorderTraversal(root->right);
+}
+
+int main() {
+    string s = "4(2(3)(1))(6(5))";
+    TreeNode* root = constructBinaryTree(s);
+
+    cout << "Inorder traversal: ";
+    inorderTraversal(root);
+    cout << endl;
+
+    return 0;
+}
+
+Answer 5:-
+class Solution {
+public:
+    int compress(vector<char>& chars) {
+        string s= "";
+        for(auto x:chars)
+        {
+            s+=x;
+        }
+      
+        if(s.size()==1)
+        {
+            return 1;
+        }
+       
+        int count=1, ans=0;;
+        char ch;
+        vector<char>a;
+        int n=s.size();
+        for(int i=0;i<n-1;i++)
+        {
+            if(s[i]!=s[i+1])
+            { 
+               a.push_back(s[i]);
+                 if(count>1)
+               {
+                   ans+=2;
+                    string temp=to_string(count);
+                  
+                    for(int it=0;it<temp.size();it++)
+                      a.push_back(temp[it]);
+                }
+               else
+                ans+=1;
+               count=1;
+
+                 
+            }
+            else
+            { 
+                ch=s[i];
+                count++;
+
+            }
+
+        }
+        a.push_back(s[n-1]);
+        if(s[n-1]==s[n-2])
+        {
+            
+                string temp=to_string(count);
+                    for(int it=0;it<temp.size();it++)
+                      a.push_back(temp[it]);
+          
+        }
+       
+        chars=a;
+        
+        return a.size();
+    }
+};
+
+Answer 6:-
+class Solution {
+public:
+    vector<int> findAnagrams(string s, string p) {
+        unordered_map<char,int> mp1,mp2;
+        int k=p.size();
+        vector<int> ans;
+        for(int i=0;i<k;i++){
+            mp1[p[i]]++;
+            mp2[s[i]]++;
+        }
+        if(mp1==mp2)ans.push_back(0);
+        for(int i=k;i<s.size();i++){
+    
+            mp2[s[i]]++;
+            mp2[s[i-k]]--;
+            if(mp2[s[i-k]]==0) 
+                 mp2.erase(s[i-k]);        if(mp1==mp2)ans.push_back(i-k+1);
+    }
+        return ans;
+     }
+};
+
+Answer 7:-
+class Solution {
+public:
+    string decodeString(string s) {
+    stack<string> chars;
+    stack<int> nums;
+    string res;
+    int num = 0;
+    for (char c : s) {
+        if (isdigit(c)) {
+            num = num * 10 + (c - '0');
+        } else if (c == '[') {
+            chars.push(res);
+            nums.push(num);
+            res = "";
+            num = 0;
+        } else if (c == ']') {
+            string tmp = res;
+            res = chars.top();
+            chars.pop();
+            for (int i = nums.top(); i > 0; i--) res += tmp;
+            nums.pop();
+        } else {
+            res += c;
+        }
+    }
+    return res;
+}
+};
+
+Answer 8:-
+class Solution {
+public:
+    bool buddyStrings(string s, string goal) {
+        unordered_map<char,int>mp;
+        for(int i =0; i<s.length(); i++) mp[s[i]] = i;
+        for(int i =0; i<goal.length(); i++){
+            if(mp.find(goal[i]) == mp.end()) return false;
+            if(mp[goal[i]] != i){
+                swap(s[i], s[mp[goal[i]]]);
+                if(s == goal) return true;
+                swap(s[i], s[mp[goal[i]]]);
+            }
+        }
+        return false;
+    }
+};
