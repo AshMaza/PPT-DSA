@@ -1,0 +1,110 @@
+Answer 1:-
+ 1. Static Position:    - The default position value for elements.     Example:    <div class="static-box">      This is a static box.    </div>     .static-box {      /* No additional positioning properties needed */    }   2. Fixed Position:    - Elements with fixed positioning are positioned relative to the browser window.    - They remain fixed in their position even when the page is scrolled.     Example:    <div class="fixed-box">      This is a fixed box.    </div>     .fixed-box {      position: fixed;      top: 20px;      right: 20px;    }   3. Sticky Position:    - Elements with sticky positioning are positioned based on the user's scroll position.    - They behave like a hybrid of relative and fixed positioning.    - When the element reaches a specified scroll position, it becomes fixed. Until then, it behaves like a relatively positioned element.     Example:    <div class="sticky-box">      This is a sticky box.    </div>     .sticky-box {      position: sticky;      top: 50px;    }  4. Relative Position:    - Elements with relative positioning are positioned relative to their normal position in the document flow.    - They can be moved using the `top`, `bottom`, `left`, or `right` properties, but their movement does not affect the positions of other elements.     Example:    <div class="relative-box">      This is a relative box.    </div>     .relative-box {      position: relative;      top: 10px;      left: 20px;    }  5. Absolute Position:    - Elements with absolute positioning are positioned relative to their nearest positioned ancestor (an ancestor with a position value other than static) or to the initial containing block if there is no positioned ancestor.    - Absolute positioned elements are removed from the normal flow of the document and do not affect the positions of other elements.     Example:    <div class="absolute-container">      <div class="absolute-box">        This is an absolute box.      </div>    </div>     .absolute-box {      position: absolute;      top: 50px;      left: 50px;    }
+Answer 2:-
+<form id="myForm" onsubmit="validateForm(event)">
+  <label for="name">Name:</label>
+  <input type="text" id="name" required>
+  
+  <label for="email">Email:</label>
+  <input type="email" id="email" required>
+  
+  <label for="phone">Phone Number:</label>
+  <input type="tel" id="phone" required>
+  
+  <label for="password">Password:</label>
+  <input type="password" id="password" required>
+  
+  <label for="age">Age:</label>
+  <input type="number" id="age" required>
+  
+  <label for="gender">Gender:</label>
+  <select id="gender" required>
+    <option value="">Select</option>
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+    <option value="other">Other</option>
+  </select>
+  
+  <label for="date">Date:</label>
+  <input type="date" id="date" required>
+  
+  <label for="color">Color:</label>
+  <input type="color" id="color" required>
+  
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+  function validateForm(event) {
+    event.preventDefault();
+    
+    // Perform custom validation logic
+    var nameInput = document.getElementById('name');
+    var emailInput = document.getElementById('email');
+    var phoneInput = document.getElementById('phone');
+    var passwordInput = document.getElementById('password');
+    var ageInput = document.getElementById('age');
+    var genderInput = document.getElementById('gender');
+    var dateInput = document.getElementById('date');
+    var colorInput = document.getElementById('color');
+    
+    // Check if all required fields are filled
+    if (!nameInput.value || !emailInput.value || !phoneInput.value || !passwordInput.value ||
+        !ageInput.value || !genderInput.value || !dateInput.value || !colorInput.value) {
+      alert("Please fill in all the required fields.");
+      return;
+    }
+    
+    // Perform additional validation for specific fields
+    // (e.g., regex patterns, length requirements, etc.)
+    
+    // Submit the form if all validation passes
+    document.getElementById("myForm").submit();
+  }
+</script>
+
+Answer 3:-
+Execution context is an abstract concept in JavaScript that defines the environment in which JavaScript code is executed. It includes all the necessary information and variables that are needed to execute a piece of code. Each time a function is invoked or a block of code is evaluated, a new execution context is created.
+
+The execution context can be divided into three types:
+
+1. Global Execution Context:
+   - The Global Execution Context is created when the JavaScript code starts running.
+   - It represents the default or global scope of the program.
+   - There is only one Global Execution Context per JavaScript program.
+   - It consists of two components:
+     - Global Object: It represents the global scope and contains built-in JavaScript objects and functions such as `window`, `document`, `console`, etc.
+     - Global Scope: It contains variables and functions defined globally, which are accessible throughout the program.
+
+2. Function Execution Context:
+   - A new Function Execution Context is created each time a function is called.
+   - It represents the scope of the function and contains information specific to that function call.
+   - Each function invocation has its own Function Execution Context, independent of other invocations of the same function.
+   - It consists of two components:
+     - Variable Environment: It stores the function's variables, function arguments, and inner functions.
+     - Scope Chain: It maintains the lexical environment by linking to outer functions' variable environments, enabling access to variables in the outer scope.
+
+ 
+
+3. Eval Execution Context (Not commonly used):
+   - The Eval Execution Context is created when the code is executed inside the `eval()` function.
+   - It represents the scope of the evaluated code.
+   - It is similar to the Function Execution Context but has a slightly different behavior.
+
+Each execution context is created in a stack-like structure known as the "Execution Context Stack" or "Call Stack." When a function is called, a new Function Execution Context is created and pushed onto the stack. When the function execution is completed, the context is popped from the stack, and the control goes back to the calling context.
+
+
+Answer 4:-
+https://github.com/AshMaza/website-3-July
+
+Answer 5:-
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
+.gallery img {
+  width: 100%;
+  height: auto;
+}
