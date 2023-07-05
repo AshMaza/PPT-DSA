@@ -1,0 +1,287 @@
+Answer 1:-
+`<!DOCTYPE html>` is not an HTML tag; it is a Document Type Declaration (doctype). Placed at the beginning of an HTML document, it specifies the version of HTML being used. The doctype informs web browsers how to interpret and render the content correctly, as different versions of HTML have different rules. `<!DOCTYPE html>` specifically denotes HTML5, the latest HTML version. Using the correct doctype declaration ensures cross-browser compatibility and consistent rendering. Without it or with an incorrect declaration, browsers may use different rendering modes, resulting in inconsistent appearance and behavior of the web page.
+Answer 2:-
+Semantic tags in HTML are specific elements that carry meaningful information about the structure and content of a web page. These tags describe the purpose and meaning of the enclosed content, making it easier for search engines, accessibility tools, and developers to understand and interpret the page's structure.
+
+Semantic tags include elements like `<header>`, `<nav>`, `<section>`, `<article>`, `<aside>`, `<footer>`, `<main>`, `<figure>`, `<figcaption>`, and more. Each tag represents a specific section or type of content within a web page.
+
+The importance of semantic tags lies in their ability to improve the accessibility and search engine optimization (SEO) of a website. Search engines can better understand the page's content and hierarchy, leading to improved indexing and higher visibility in search results. Additionally, semantic tags assist screen readers and other accessibility tools in properly conveying the structure and meaning of the page to users with disabilities.
+
+Using semantic tags also helps with code organization and maintenance. By utilizing appropriate tags, developers can create well-structured HTML documents that are easier to read, navigate, and modify, promoting code reusability and reducing maintenance efforts.
+
+
+Answer 3:-
+HTML tags and elements are related concepts but have distinct meanings. 
+
+HTML tags are the markup characters used to define the structure and presentation of elements within an HTML document. They are enclosed within angle brackets, such as `<tagname>`. Tags provide instructions to the browser on how to render and interpret the content.
+
+On the other hand, HTML elements consist of the opening and closing tags along with the content placed between them. They represent the building blocks of an HTML document and define the structure and meaning of the content. Elements consist of both the opening and closing tags, such as `<tagname>content</tagname>`.
+
+
+Answer 4:
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Asham Zaidi</title>
+  </head>
+  <body>
+    <table cellspacing="20">
+      <tr>
+        <td>
+          <img src="IMG_20220304_192810.jpg"
+            width="150"
+            height="200"
+            border="1"></td>
+        <td><h1>Syed Mazahir Mehdi Zaidi</h1>
+        <p>
+          <em><strong>Bachelor of Technology,Computer Science Engineering (B.Tech,CSE)</strong></em>
+          <br>
+          Semester Seven , Fourth Year
+          <br>
+          Amity University Lucknow
+        </p>
+        <p>Proficient in C++ programming and Web development enthusiast, well-organized and collaborative team player with strong communication and analytical abilities.
+          <br>Hardworking and passionate job seeker to secure entry level software engineer intern position.Ready to help team achieve company goals. </p>
+        </td>
+      </tr>
+    </table>
+      <hr>
+      <h3><u>Education</u></h3>
+      <ul>
+        <li>XII(CBSE)|Central Academy Indira Nagar , Lucknow <br>
+        94.6% | 2020</li>
+        <li>Computer Engineering | Amity University Lucknow <br>
+        CGPA: 8.73 | 2020-24</li>
+      </ul>
+      <hr>
+      <h3><u>My Hobbies</u></h3>
+      <ol>
+        <li>Playing Cricket</li>
+        <li><a href="https://www.youtube.com/shorts/4OTpg4MitVw">Playing Multiplayer Online Games</a></li>
+      </ol>
+      <hr>
+      <h3><u>My Achievements</u></h3>
+      <table border="1">
+        <tr>
+          <th>S.No</th>
+          <th>Achievements</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Secured A+ grade for 8 Consecutive Years</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>
+            Dell Champ City Level Third Rank.
+          </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Appointed as The College Captain of School Council.</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Named as the Mr.Central Academy for the year 2020</td>
+        </tr>
+      </table>
+      <hr>
+      <h3><u>My Skills</u></h3>
+      <table cellspacing="10" border="2">
+        <tr>
+          <th>Technical Skills</th>
+          <th>Soft Skills</th>
+        </tr>
+        <tr>
+          <td>C++ programming</td>
+          <td>Problem Solving</td>
+        </tr>
+        <tr>
+          <td>C programming</td>
+          <td>Time Management</td>
+        </tr>
+        <tr>
+          <td>HTML</td>
+          <td>Multitasking Abilities</td>
+        </tr>
+        <tr>
+          <td>Data Structures.</td>
+          <td></td>
+        </tr>
+      </table>
+      <h3>
+        <a href="contact.html">Contact Me</a>
+      </h3>
+
+
+  </body>
+</html>
+
+Answer 5:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample</title>
+</head>
+<body>
+    <img src="image.jpg" alt="image" height="400" width="700">
+    <h2>We Will Be learning Following things this week</h2>
+    <table>
+        <tr>
+            <th>Day 1</th>
+            <th>Day 2</th>
+            <th>Day 3</th>
+            <th>Day 4</th>
+        </tr>
+        <tr>
+            <td>Linux 1</td>
+            <td>HTML</td>
+            <td>Linux 2</td>
+            <td>Linux 3</td>
+        </tr>
+        <tr>
+            <td>Git 1</td>
+            <td>CSS</td>
+            <td>Git 2</td>
+            <td>BootStrap</td>
+        </tr>
+    </table>
+    <h3>If You Want To Contact Fill The Following Form</h3>
+    <form>
+        <label for="">Name</label>
+        <input type="text" name="" id="">
+        <br>
+        <label for="">Phone No:</label>
+        <input type="text" name="" id="">
+        <br>
+        <label for="">Email Id</label>
+        <input type="text">
+    </form>
+    <h2>Following Things are important to be a programmer</h2>
+    <ul>
+        <li>A Problem Solving Mindset</li>
+        <li>Consistency
+            <ul>
+                <li>clean code</li>
+                <li>Thorough Knowledge of the core concepts</li>
+                <li>Readable Code</li>
+            </ul>
+        </li>
+        <li>Speed</li>
+    </ul>
+</body>
+</html>
+
+Answer 6:-
+HTML5 introduced several significant advancements over its previous versions, offering numerous advantages. Firstly, it provided better support for multimedia elements like video and audio, eliminating the need for third-party plugins. Additionally, HTML5 introduced a more semantic markup structure, enabling developers to define the meaning of content using new elements such as `<header>`, `<footer>`, and `<nav>`. The improved form controls and input types offered better user experience and validation options. HTML5 also brought support for offline storage and caching through features like Local Storage and Application Cache. Furthermore, it enhanced the ability to create dynamic web applications with the introduction of the Canvas element and the WebSocket API. Overall, HTML5 brought modernization and enriched capabilities to web development.
+Answer 7:
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Music Player</title>
+  <style>
+    .music-player {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <div class="music-player">
+    <audio id="audio-player" controls>
+      <source src="path_to_audio_file.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+</body>
+</html>
+
+Answer 8:-
+The `<img>` tag is used to embed standalone images in an HTML document. It requires the `src` attribute to specify the image file's source and the `alt` attribute to provide alternative text for accessibility. It is primarily used for visual content without any additional context or description.
+
+The `<figure>` tag, on the other hand, is used to group together related content, typically an image, and its associated caption or description. It provides a semantic container to convey that the content within it is a single unit. The `<figure>` tag can include an `<img>` tag along with a `<figcaption>` tag to provide a caption or description for the image.
+
+Answer 9:
+In HTML, a tag represents an element or a structure within the markup, while an attribute provides additional information or modifies the behavior of a tag. Here's a breakdown of the differences:
+
+HTML Tag:
+A tag is an element in HTML that defines the structure or content of a document. Tags are enclosed in angle brackets (`<` and `>`). For example, `<h1>`, `<p>`, and `<div>` are all examples of HTML tags. Tags can be self-closing, like `<img>` or `<br>`, or they can have opening and closing tags, like `<div></div>`.
+
+HTML Attribute:
+An attribute is used to provide additional information or modify the behavior of an HTML tag. Attributes are specified within the opening tag of an element and consist of a name-value pair. For example, in `<a href="https://www.example.com">`, the `href` attribute provides the URL that the link points to.
+
+Global Attributes:
+Global attributes are attributes that can be applied to any HTML element. Some common global attributes include:
+
+1. `class`: Specifies one or more class names for an element, allowing it to be styled using CSS or targeted by JavaScript.
+2. `id`: Specifies a unique identifier for an element, which can be used for styling or scripting purposes.
+3. `style`: Defines inline CSS styles to be applied to the element.
+4. `title`: Specifies additional information about an element, typically displayed as a tooltip when hovering over the element.
+5. `data-*`: Allows the storage of custom data attributes for an element, which can be accessed through JavaScript.
+
+These attributes can be used with various HTML tags to provide additional functionality or styling to elements in an HTML document.
+
+Answer 10:-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule</title>
+</head>
+<body>
+    <table border="1" cellpadding="2px" cellspacing="5px">
+        <tr>
+            <th rowspan="3">Day</th>
+            <th colspan="4">Seminar</th>
+        </tr>
+        <tr>
+            <th colspan="2">Schedule</th>
+            <th colspan="2" rowspan="2">Topic</th>
+        </tr>
+        <tr>
+            <th>Begin</th>
+            <th>End</th>
+        </tr>
+        <tr>
+            <td rowspan="2">Monday</td>
+            <td rowspan="2">8:00 Am</td>
+            <td rowspan="2">5:00 pm</td>
+            <td>Introduction To XML</td>
+        </tr>
+        <tr>
+            <td>Validity Dtd and relad Ng</td>
+        </tr>
+        <tr>
+            <td rowspan="3">Tuesday</td>
+            <td>8:00 am</td>
+            <td>11:00 am</td>
+            <td rowspan="2">XPath</td>
+        </tr>
+        <tr>
+            <td>11:00 am</td>
+            <td>2:00 pm</td>
+        </tr>
+        <tr>
+            <td>2:00pm</td>
+            <td>5::00pm</td>
+            <td>XSL transformations</td>
+        </tr>
+        <tr>
+            <td>Wednesday</td>
+            <td>8:00 pm</td>
+            <td>12:00pm</td>
+            <td>XSL formatting objects</td>
+        </tr>
+    </table>
+</body>
+</html>
+
+
+
