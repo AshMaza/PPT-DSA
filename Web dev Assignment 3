@@ -1,0 +1,154 @@
+Answer 1:-
+A media query in CSS is a feature used to apply different styles to a web page based on conditions such as device characteristics or viewport size. It enables developers to create responsive designs by defining CSS rules that adjust layout and appearance according to various screen sizes and devices. Media queries ensure that websites look and function well across different devices, allowing specific styles to be applied based on viewport width, height, aspect ratio, and device type. This helps provide an optimal user experience by adapting the design to fit the specific device being used.
+Answer 2:-
+To define a media query in CSS, you use the `@media` rule followed by a condition enclosed in parentheses. The condition typically checks a specific aspect of the viewport, such as its width or orientation. Inside the media query block, you write the CSS rules that will be applied when the condition is met. For example, `@media (max-width: 600px)` defines a media query that targets viewports with a maximum width of 600 pixels. Within this block, you can specify different styles for elements to create responsive designs that adapt to various screen sizes and devices.
+Answer 3:-
+Breakpoints in responsive web design are specific thresholds in viewport width where a website's layout and styles need to adjust. They are used in conjunction with media queries to define conditions for different screen sizes and devices. By strategically choosing breakpoints, such as for small mobile devices, smartphones, tablets, and larger screens, developers can ensure that the website looks and functions well across various devices. Media queries are then employed to apply specific CSS rules at each breakpoint, allowing for responsive design adjustments. This approach enables the website to adapt its layout, positioning, and other design aspects to provide an optimal user experience across different screen sizes and devices.Breakpoints in responsive web design are specific thresholds in viewport width where a website's layout and styles need to adjust. They are used in conjunction with media queries to define conditions for different screen sizes and devices. By strategically choosing breakpoints, such as for small mobile devices, smartphones, tablets, and larger screens, developers can ensure that the website looks and functions well across various devices. Media queries are then employed to apply specific CSS rules at each breakpoint, allowing for responsive design adjustments. This approach enables the website to adapt its layout, positioning, and other design aspects to provide an optimal user experience across different screen sizes and devices.
+Answer 4:-
+The purpose of using media queries for print media is to customize the layout, styles, and formatting specifically for printing purposes. By targeting the print media type with media queries, developers can modify elements such as font sizes, margins, page breaks, and hiding or showing certain content elements to ensure that the printed output is optimized for readability and aesthetics. Media queries for print media enable websites to provide a better user experience when users choose to print web pages, allowing for well-structured and visually appealing printed documents.
+Answer 5:-
+The purpose of the orientation media feature in CSS is to target and apply specific styles based on the orientation (landscape or portrait) of the device's viewport. It allows developers to optimize the layout and presentation of a website depending on how the user holds their device. By using the orientation media feature within media queries, developers can make responsive design adjustments, such as modifying the placement of elements, adjusting font sizes, or repositioning images, to enhance the user experience and ensure that the content is well-optimized for the device's orientation.
+Answer 6:-
+<!DOCTYPE html>
+<html>
+<head>
+  <title>One Card Landing Page</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <img src="logo.png" alt="One Card Logo">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Features</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <h1>One Card</h1>
+    <p>Your All-in-One Card Solution</p>
+    <a href="#" class="cta-button">Get Started</a>
+  </header>
+  
+  <section class="video-section">
+    <video src="video.mp4" controls></video>
+  </section>
+  
+  <section class="features-section">
+    <!-- Add your features content here -->
+  </section>
+  
+  <section class="pricing-section">
+    <!-- Add your pricing content here -->
+  </section>
+  
+  <section class="contact-section">
+    <!-- Add your contact content here -->
+  </section>
+  
+  <footer>
+    <p>&copy; 2023 One Card. All rights reserved.</p>
+  </footer>
+</body>
+</html>
+/* Reset some default styles for consistency */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 40px;
+  text-align: center;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+nav img {
+  height: 30px;
+}
+
+nav ul {
+  list-style-type: none;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ff5c39;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.video-section {
+  background-color: #fff;
+  padding: 40px;
+  text-align: center;
+}
+
+.video-section video {
+  width: 100%;
+  max-width: 800px;
+}
+
+.features-section {
+  background-color: #f2f2f2;
+  padding: 40px;
+  text-align: center;
+}
+
+.pricing-section {
+  background-color: #fff;
+  padding: 40px;
+  text-align: center;
+}
+
+.contact-section {
+  background-color: #f2f2f2;
+  padding: 40px;
+  text-align: center;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+Note:- couldn't complete the rest of the questions , will complete and upload.
