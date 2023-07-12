@@ -1,0 +1,260 @@
+Answer 1:-
+const box = document.createElement('div');
+box.style.width = '300px';
+box.style.height = '300px';
+box.style.backgroundColor = 'red';
+document.body.appendChild(box);
+
+box.addEventListener('click', () => {
+  box.style.backgroundColor = 'yellow';
+  box.style.width = '600px';
+  box.style.height = '600px';
+});
+
+
+Answer 2:-
+const inputBox = document.getElementById('inputBox');
+const submitButton = document.getElementById('submitButton');
+const output = document.getElementById('output');
+
+submitButton.addEventListener('click', () => {
+  const text = inputBox.value;
+  output.innerHTML += `<p>${text}</p>`;
+});
+
+Answer 4:-
+<!DOCTYPE html>
+<html>
+<head>
+<title>Responsive Navbar</title>
+<style>
+.navbar {
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.navbar .hamburger {
+  display: none;
+}
+
+.navbar .menu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .navbar .hamburger {
+    display: block;
+  }
+
+  .navbar .menu {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    padding: 0;
+    list-style: none;
+  }
+
+  .navbar .menu li {
+    display: block;
+    padding: 10px;
+  }
+
+  .navbar .menu li a {
+    color: #000;
+    text-decoration: none;
+  }
+
+  .navbar .menu li a:hover {
+    color: #fff;
+  }
+}
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <a href="#">Home</a>
+  <a href="#">About</a>
+  <a href="#">Contact</a>
+  <a href="#">Blog</a>
+  <a href="#">Portfolio</a>
+  <a href="#" class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </a>
+</nav>
+</body>
+</html>
+
+
+Answer 5:-
+<!DOCTYPE html>
+<html>
+<head>
+<title>Form Validation</title>
+<script>
+function validateForm() {
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const phone = document.getElementById('phone').value;
+  const password = document.getElementById('password').value;
+  const age = document.getElementById('age').value;
+  const gender = document.getElementById('gender').value;
+  const date = document.getElementById('date').value;
+  const color = document.getElementById('color').value;
+
+  // Name validation
+  if (name.length < 3) {
+    alert('Please enter your name.');
+    return false;
+  }
+
+  // Email validation
+  if (!email.includes('@')) {
+    alert('Please enter a valid email address.');
+    return false;
+  }
+
+  // Phone validation
+  if (phone.length < 10) {
+    alert('Please enter a valid phone number.');
+    return false;
+  }
+
+  // Password validation
+  if (password.length < 8) {
+    alert('Please enter a password that is at least 8 characters long.');
+    return false;
+  }
+
+  // Age validation
+  if (age < 18) {
+    alert('You must be at least 18 years old to submit this form.');
+    return false;
+  }
+
+  // Gender validation
+  if (gender === '') {
+    alert('Please select a gender.');
+    return false;
+  }
+
+  // Date validation
+  if (date.length < 10) {
+    alert('Please enter a valid date.');
+    return false;
+  }
+
+  // Color validation
+  if (color === '') {
+    alert('Please select a color.');
+    return false;
+  }
+
+  return true;
+}
+</script>
+</head>
+<body>
+<form onsubmit="return validateForm()">
+  <input type="text" id="name" placeholder="Name">
+  <input type="email" id="email" placeholder="Email">
+  <input type="tel" id="phone" placeholder="Phone">
+  <input type="password" id="password" placeholder="Password">
+  <input type="number" id="age" placeholder="Age">
+  <select id="gender">
+    <option value="">Gender</option>
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+  </select>
+  <input type="date" id="date">
+  <input type="color" id="color">
+  <button type="submit">Submit</button>
+</form>
+</body>
+</html>
+
+
+Answer 6:-
+<!DOCTYPE html>
+<html>
+<head>
+<title>Custom Modal Window</title>
+<style>
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.modal-content {
+  width: 500px;
+  height: 300px;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #fff;
+  text-decoration: none;
+}
+
+.close:hover {
+  color: red;
+}
+</style>
+</head>
+<body>
+<button id="myBtn">Open Modal</button>
+
+<div class="modal">
+  <div class="modal-content">
+    <h1>This is a modal window</h1>
+    <p>You can click outside of this window to close it, or you can click the close button.</p>
+    <button class="close">Close</button>
+  </div>
+</div>
+
+<script>
+const modal = document.querySelector('.modal');
+const btn = document.querySelector('#myBtn');
+const closeBtn = document.querySelector('.close');
+
+btn.addEventListener('click', () => {
+  modal.style.display = 'block';
+});
+
+closeBtn.addEventListener('click', () => {
+  modal.style.display = 'none';
+});
+
+window.addEventListener('click', (event) => {
+  if (event.target === modal) {
+    modal.style.display = 'none';
+  }
+});
+</script>
+</body>
+</html>
+
