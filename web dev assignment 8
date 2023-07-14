@@ -1,0 +1,152 @@
+Answer 1:-
+React is a JavaScript library used for building user interfaces. It allows developers to create reusable UI components that efficiently update and render the user interface based on changes in data. 
+
+Pros: 
+- Efficient rendering through the use of the Virtual DOM.
+- Reusability of components.
+- Easy integration with other frameworks.
+- Large community support and ecosystem.
+
+Cons: 
+- Steeper learning curve.
+- Requires the use of additional tools and libraries for advanced features.
+- JSX syntax may feel unfamiliar to some developers.
+
+Answer 2:-
+Virtual DOM is a concept in React where a lightweight copy of the actual DOM is maintained. It is a programming technique used for efficient UI updates. When changes occur in the data, React compares the Virtual DOM with the real DOM and updates only the necessary parts, reducing the number of direct manipulations on the actual DOM and improving performance.
+
+Answer 3:-
+Virtual DOM vs Real DOM:
+
+Virtual DOM:
+- Lightweight representation of the actual DOM.
+- Changes to the Virtual DOM are batched and optimized for efficient updates.
+- React compares the Virtual DOM with the real DOM and updates only the necessary parts, minimizing direct manipulations on the actual DOM.
+
+Real DOM:
+- Actual representation of the web page's structure.
+- Any changes to the DOM directly manipulate the rendered web page.
+- Manipulating the real DOM can be slower and less efficient compared to the Virtual DOM.
+
+Answer 4:-
+In React, a component is a reusable building block that encapsulates the logic and rendering of a part of the user interface. 
+
+Types of components:
+1. Functional Components: These are JavaScript functions that accept props as input and return JSX elements as output. They are simpler and easier to understand, and commonly used for stateless or presentational components.
+
+2. Class Components: These are JavaScript classes that extend the React.Component class. They have additional features like state and lifecycle methods, making them suitable for more complex components that require internal state management and lifecycle control.
+
+Answer 5:-
+Difference between class-based and function-based components:
+
+Class-based components:
+- Defined as ES6 classes that extend the React.Component class.
+- Use the render method to return JSX.
+- Support additional features like local state and lifecycle methods.
+- Can be more verbose and require binding of methods.
+
+Function-based components:
+- Defined as JavaScript functions.
+- Accept props as input and return JSX elements as output.
+- Simpler and more concise syntax.
+- Cannot have local state or lifecycle methods until the introduction of React hooks.
+
+Answer 6:-
+React component lifecycle refers to the sequence of events that occur from the creation to the removal of a component. The lifecycle methods can be categorized into three phases:
+
+1. Mounting: Occurs when a component is being created and inserted into the DOM.
+   - constructor: Initializes state and sets up the component.
+   - render: Returns the JSX representation of the component.
+   - componentDidMount: Executes after the component is rendered on the DOM.
+
+2. Updating: Occurs when a component's props or state change.
+   - render: Re-renders the component with updated data.
+   - componentDidUpdate: Executes after the component is updated in the DOM.
+
+3. Unmounting: Occurs when a component is being removed from the DOM.
+   - componentWillUnmount: Executes before the component is unmounted and destroyed.
+
+Answer 7:-
+Prop drilling refers to the process of passing props through multiple levels of nested components, even when some intermediate components do not need those props. It can lead to code complexity and reduced maintainability.
+
+Ways to avoid prop drilling in React:
+1. Use React Context: Provides a way to share data across components without explicitly passing props through each level of the component tree.
+
+2. Use Redux: Implements a centralized state management system, allowing components to access data from a global store without prop drilling.
+
+3. Use React's Render Props or Higher-Order Components (HOC): These patterns enable components to receive data or functionality as a prop from a parent component or a higher-order component, eliminating the need for prop drilling.
+
+Answer 8:-
+import React, { useState } from 'react';
+
+function CounterApp() {
+  const [count, setCount] = useState(0);
+
+  const handleIncrement = () => {
+    setCount(count + 1);
+  };
+
+  const handleDecrement = () => {
+    setCount(count - 1);
+  };
+
+  return (
+    <div>
+      <h1>Counter App</h1>
+      <p>Count: {count}</p>
+      <button onClick={handleIncrement}>Increment</button>
+      <button onClick={handleDecrement}>Decrement</button>
+    </div>
+  );
+}
+
+export default CounterApp;
+
+Answer 9:-
+import React, { useState } from 'react';
+import axios from 'axios';
+
+function GitHubUserFinder() {
+  const [username, setUsername] = useState('');
+  const [userData, setUserData] = useState(null);
+
+  const handleChange = (event) => {
+    setUsername(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios.get(`https://api.github.com/users/${username}`)
+      .then((response) => {
+        setUserData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  return (
+    <div>
+      <h1>GitHub User Finder</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={username}
+          onChange={handleChange}
+          placeholder="Enter GitHub username"
+        />
+        <button type="submit">Search</button>
+      </form>
+      {userData && (
+        <div>
+          <img src={userData.avatar_url} alt={userData.login} />
+          <h2>{userData.name}</h2>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default GitHubUserFinder;
+
+Answer 10:-
