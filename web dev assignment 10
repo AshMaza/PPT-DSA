@@ -1,0 +1,168 @@
+Answer 1:
+Middlewares in Node.js are functions that have access to the request and response objects in the application's HTTP request-response cycle. They are essentially the building blocks of Node.js applications as they enable developers to add additional functionality to the server-side logic. Middlewares can be used for tasks such as request parsing, authentication, logging, error handling, and more. They are executed sequentially, allowing developers to modify the request or response objects, pass control to the next middleware function, or terminate the request-response cycle. Middlewares provide a flexible and modular approach to handle common tasks in Node.js applications.
+
+Answer 2:
+Express is a web application framework for Node.js that provides a higher level of abstraction and simplifies the process of building web applications compared to using Node.js alone. Express offers a range of features and functionalities that make development faster and more efficient. It provides a routing mechanism, middleware support, and an ecosystem of plugins and extensions. Express abstracts away many low-level details and provides a more intuitive and declarative API for handling HTTP requests and responses. It also offers better error handling and simplifies tasks such as routing, session management, and template rendering. Overall, Express enhances the productivity and maintainability of Node.js web applications.
+
+Answer 3:
+REST API (Representational State Transfer Application Programming Interface) is an architectural style for designing networked applications. It is based on a set of principles and constraints that emphasize scalability, statelessness, and uniform interfaces. REST APIs use standard HTTP methods like GET, POST, PUT, DELETE to perform CRUD (Create, Read, Update, Delete) operations on resources. These APIs are stateless, meaning that each request contains all the necessary information to be processed. They typically return data in formats like JSON or XML. REST APIs have gained popularity due to their simplicity, scalability, and compatibility with different platforms and technologies.
+
+Answer 4:-
+MongoDB is a popular NoSQL database that is widely used in modern web development. It is a document-oriented database, which means it stores data in flexible, JSON-like documents called BSON (Binary JSON). MongoDB is known for its scalability, high performance, and ability to handle large amounts of unstructured data. It provides a rich query language, indexing support, and various features like sharding and replication for high availability and fault tolerance. MongoDB is suitable for a wide range of applications, including content management systems, real-time analytics, mobile apps, and IoT platforms. Its flexible schema and scalability make it a popular choice for handling diverse and evolving data.
+
+Answer 5:
+Mongoose is an Object Data Modeling (ODM) library for Node.js that provides a higher-level abstraction over the MongoDB database. It simplifies the interaction with MongoDB by providing a schema-based solution for modeling application data. Mongoose allows developers to define schemas, which specify the structure and data types of documents stored in MongoDB collections. It provides a straightforward API for creating, querying, updating, and deleting documents, as well as support for data validation, middleware hooks, and relationships between models. Mongoose enhances productivity by handling the low-level details of MongoDB interactions and provides additional features and utilities to work with MongoDB in a more convenient and organized manner.
+
+ Answer 6:
+const http = require('http');
+
+// Sample product data
+const menProducts = [
+  { id: 1, name: 'Men Product 1' },
+  { id: 2, name: 'Men Product 2' },
+  // Add more products here...
+];
+
+const womenProducts = [
+  { id: 1, name: 'Women Product 1' },
+  { id: 2, name: 'Women Product 2' },
+  // Add more products here...
+];
+
+// Create a server
+const server = http.createServer((req, res) => {
+  // Set the response headers
+  res.setHeader('Content-Type', 'application/json');
+
+  // Handle different endpoints
+  if (req.url === '/') {
+    // Send welcome message
+    res.end(JSON.stringify({ message: 'Welcome to Men & Women Dummy Data' }));
+  } else if (req.url === '/men') {
+    // Send men products data
+    res.end(JSON.stringify(menProducts));
+  } else if (req.url === '/women') {
+    // Send women products data
+    res.end(JSON.stringify(womenProducts));
+  } else {
+    // Handle page not found
+    res.statusCode = 404;
+    res.end(JSON.stringify({ message: 'Page not found' }));
+  }
+});
+
+// Start the server
+const port = 3000;
+server.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
+
+Answer 7:
+const express = require('express');
+const app = express();
+
+// Define the route for generating a random number
+app.get('/random', (req, res) => {
+  const randomNumber = Math.floor(Math.random() * 100); // Generate a random number between 0 and 99
+
+  // Send the random number as a response
+  res.json({ random: randomNumber });
+});
+
+// Start the server
+const port = 3000;
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
+
+Answer 8:
+const express = require('express');
+const app = express();
+
+let counter = 0;
+
+// Endpoint to get the current counter value
+app.get('/', (req, res) => {
+  res.json({ counter });
+});
+
+// Endpoint to increment the counter
+app.post('/increment', (req, res) => {
+  counter++;
+  res.json({ counter });
+});
+
+// Endpoint to decrement the counter
+app.post('/decrement', (req, res) => {
+  counter--;
+  res.json({ counter });
+});
+
+// Start the server
+const port = 3000;
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
+
+Answer 9:
+const express = require('express');
+const app = express();
+app.use(express.json());
+
+let todos = [];
+
+// Endpoint to retrieve all todos
+app.get('/', (req, res) => {
+  res.json(todos);
+});
+
+// Middleware to validate mandatory input (task)
+const validateTaskInput = (req, res, next) => {
+  const { task } = req.body;
+  if (!task) {
+    return res.status(400).json({ message: 'Validation failed. Task is mandatory.' });
+  }
+  next();
+};
+
+// Endpoint to create a new todo
+app.post('/add', validateTaskInput, (req, res) => {
+  const { task } = req.body;
+  const newTodo = { id: todos.length + 1, task };
+  todos.push(newTodo);
+  res.json({ message: 'Todo created successfully' });
+});
+
+// Endpoint to update a todo by ID
+app.put('/update/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const { task } = req.body;
+  const todo = todos.find((todo) => todo.id === id);
+
+  if (!todo) {
+    return res.status(404).json({ message: 'Todo not found' });
+  }
+
+  todo.task = task;
+  res.json({ message: 'Todo updated successfully', data: todos });
+});
+
+// Endpoint to delete a todo by ID
+app.delete('/delete/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const index = todos.findIndex((todo) => todo.id === id);
+
+  if (index === -1) {
+    return res.status(404).json({ message: 'Todo not found' });
+  }
+
+  todos.splice(index, 1);
+  res.json({ message: 'Todo deleted successfully', data: todos });
+});
+
+// Start the server
+const port = 3000;
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
+
